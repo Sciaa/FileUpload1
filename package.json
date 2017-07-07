@@ -1,0 +1,21 @@
+{
+  "name": "FileUpload1",
+  "description": "a really cool app",
+  "version": "1.0.0",
+  "engines": {
+    "node": "6.10.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "jimp": "^0.2.8",
+    "jquery": "^2.1.4",
+    "lodash": "^3.10.1",
+    "materialize-css": "^0.97.1",
+    "multer": "^1.3.0"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "homepage": "https://github.com/Sciaa/File-Upload#readme"
+}
