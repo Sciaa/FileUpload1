@@ -65,6 +65,9 @@ app.post('/uploadImg', upload.array('pics'), (req, res, next)=>{
 });
     
 
-app.listen(8888, ()=>{
-    console.log('Hosted on Port 8888')
-});
+// bind the app to listen for connections on a specified port
+var port = process.env.PORT || 3000;
+app.listen(port);
+
+// Render some console log output
+console.log("Listening on port " + port);
