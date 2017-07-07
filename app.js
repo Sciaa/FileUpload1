@@ -13,41 +13,41 @@ let express= require('express')
     ,fileType = require('file-type');
     
     
-    convertImgs(files){
+        function convertImgs(files){
 
-        let promises = [];
+            let promises = [];
 
-        _.forEach(files, (file)=>{
+            _.forEach(files, (file)=>{
 
-            //Create a new promise for each image processing
-            let promise = new Promise((resolve, reject)=>{
+                //Create a new promise for each image processing
+                let promise = new Promise((resolve, reject)=>{
 
-            //Resolve image file type
-            let type = fileType(file.buffer);
+                //Resolve image file type
+                let type = fileType(file.buffer);
 
-            //Create a jimp instance for this image
-            new Jimp(file.buffer, (err, image)=>{
+                //Create a jimp instance for this image
+                new Jimp(file.buffer, (err, image)=>{
 
-                //Resize this image
-                image.resize(512, 512)
-                    //lower the quality by 90%
-                    .quality(10)
-                    .getBuffer(type.mime, (err, buffer)=>{
-                        //Transfer image file buffer to base64 string
-                        let base64Image = buffer.toString('base64');
-                        let imgSrcString = "data:" + type.mime + ';base64, ' + base64Image;
-                        //Resolve base94 string
-                        resolve(imgSrcString);
-                    });
-                })
+                    //Resize this image
+                    image.resize(512, 512)
+                        //lower the quality by 90%
+                        .quality(10)
+                        .getBuffer(type.mime, (err, buffer)=>{
+                            //Transfer image file buffer to base64 string
+                            let base64Image = buffer.toString('base64');
+                            let imgSrcString = "data:" + type.mime + ';base64, ' + base64Image;
+                            //Resolve base94 string
+                            resolve(imgSrcString);
+                        });
+                    })
+                });
+
+                promises.push(promise);
             });
 
-            promises.push(promise);
-        });
-
-        //Return promise array
-        return Promise.all(promises);
-    }
+            //Return promise array
+            return Promise.all(promises);
+        };    
 
 app.get('/', (req, res, next)=>{
     res.sendFile(__dirname+'/index.htm');
