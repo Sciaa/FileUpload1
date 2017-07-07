@@ -6,6 +6,7 @@
     "node": "6.10.1"
   },
   "dependencies": {
+    "bluebird": "^2.10.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "jimp": "^0.2.8",
