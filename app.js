@@ -33,7 +33,7 @@ let express= require('express')
                     image.resize(512, 512)
                         //lower the quality by 90%
                         .quality(10)
-                        .write('/public/image1.jpg')
+                        .write('public/image1.jpg')
                         .getBuffer(type.mime, (err, buffer)=>{
                             //Transfer image file buffer to base64 string
                             let base64Image = buffer.toString('base64');
