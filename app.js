@@ -12,6 +12,7 @@ let express= require('express')
     ,Promise = require('bluebird')
     ,fileType = require('file-type');
     
+    app.use(express.static('public'));
     
         function convertImgs(files){
 
